@@ -45,7 +45,7 @@ class UI {
        <article class="product">
        <div class="img-container">
            <img src=${image} alt=${title} class="product-img">
-           <button class="bag-btn" data-id=${id}><i class="fa fa-shopping-cart"></i>add to bag</button>
+           <button class="bag-btn" data-id=${id}><i class="fa fa-shopping-cart"></i>add to cart</button>
        </div>
        <h3>${title}</h3>
        <h4>$${price}</h4>
@@ -104,7 +104,7 @@ class UI {
         <span class="remove-item" data-id=${item.id}>remove</span>
     </div>
     <div>
-        <i class="fa fa-chevron-up" >
+        <i class="fa fa-chevron-up" data-id=${item.id} >
 
         </i>
         <p class="item-amount" data-id=${item.id}>${item.amount}</p>
@@ -136,6 +136,23 @@ class UI {
   cartLogic() {
     clearCartBtn.addEventListener('click', () => {
       this.clearCart();
+    });
+    // cart functionality
+    cartContent.addEventListener('click', (e) => {
+      if (e.target.classList.contains('remove-item')) {
+        let removeItem = e.target;
+        let id = removeItem.dataset.id;
+        cartContent.removeChild(e.target.parentElement.parentElement);
+        this.removeItem(id);
+      } else if (e.target.classList.contains('fa-chevron-up')) {
+        let addAmount = e.target;
+        let id = addAmount.dataset.id;
+        let tempItem = cart.find((item) => item.id === id);
+        tempItem.amount += 1;
+        Storage.saveCart(cart);
+        this.setCartValues(cart);
+        addAmount.nextElementSibling.innerText = tempItem.amount;
+      }
     });
   }
 
