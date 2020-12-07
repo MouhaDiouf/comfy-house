@@ -113,7 +113,10 @@ class UI {
     `;
     cartContent.appendChild(div);
   }
-  showCart() {}
+  showCart() {
+    cartOverlay.classList.add('transparentBcg');
+    cartDOM.classList.add('showCart');
+  }
 }
 
 // local storage
