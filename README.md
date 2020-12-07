@@ -13,7 +13,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://raw.githack.com/MouhaDiouf/newsweek_replica/development/index.html)
+[Live Demo Link](https://raw.githack.com/MouhaDiouf/comfy-house/develop/index.html)
 
 
 ## Author
