@@ -1,4 +1,4 @@
-# Newsweek Replica
+# Comfy House
 
 >This is a cart app built with HTML, CSS & JavaScript
 
